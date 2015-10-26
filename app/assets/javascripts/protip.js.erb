@@ -1,0 +1,13 @@
+//= require jquery.protip.min
+
+
+$(document).ready(function(){
+    <% path_to_file = "#{Rails.root}/config/protip.yml" %>
+    <% if File.exist?(path_to_file) %>
+    	protipconfig = <%= JSON.dump(YAML.load_file(path_to_file)) %>;
+    <% else %>
+      protipconfig = ''
+    <% end %>  
+    $.protip(protipconfig);
+    
+});
